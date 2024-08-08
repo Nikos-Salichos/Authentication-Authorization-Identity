@@ -1,0 +1,6 @@
+@Auth.Identity.Domain_HostAddress = http://localhost:5271
+
+GET {{Auth.Identity.Domain_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
