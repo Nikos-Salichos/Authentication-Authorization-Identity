@@ -10,7 +10,12 @@ namespace Auth.Identity.Infrastructure
         {
         }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder options) =>
-        options.UseSqlite("DataSource = identityDb; Cache=Shared");
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+
+            builder.Entity<User>().Property(u => u.Initials).HasMaxLength(5);
+            builder.HasDefaultSchema("identity");
+        }
     }
 }
